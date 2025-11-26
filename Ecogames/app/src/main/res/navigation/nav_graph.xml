@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/menuFragment">
+
+    <fragment
+        android:id="@+id/menuFragment"
+        android:name="com.example.semaforo.MenuFragment"
+        tools:layout="@layout/fragment_menu">
+
+        <action
+            android:id="@+id/action_menuFragment_to_gameFragment"
+            app:destination="@id/gameFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_memoryGameFragment"
+            app:destination="@id/memoryGameFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/gameFragment"
+        android:name="com.example.semaforo.GameFragment"
+        tools:layout="@layout/fragment_game">
+
+        <action
+            android:id="@+id/action_gameFragment_to_resultFragment"
+            app:destination="@id/resultFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.example.semaforo.ResultFragment"
+        tools:layout="@layout/fragment_result">
+
+        <!-- Volver al menú limpiando el back stack -->
+        <action
+            android:id="@+id/action_resultFragment_to_menuFragment"
+            app:destination="@id/menuFragment"
+            app:popUpTo="@id/menuFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/memoryGameFragment"
+        android:name="com.example.semaforo.MemoryGameFragment"
+        tools:layout="@layout/fragment_memory_game">
+        <action
+            android:id="@+id/action_memoryGameFragment_to_memoryResultFragment"
+            app:destination="@id/memoryResultFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/memoryResultFragment"
+        android:name="com.example.semaforo.MemoryResultFragment"
+        tools:layout="@layout/fragment_memory_result" />
+    <action
+        android:id="@+id/action_memoryGameFragment_to_menuFragment"
+        app:destination="@id/menuFragment"
+        app:popUpTo="@id/menuFragment"
+        app:popUpToInclusive="true" />
+
+</navigation>

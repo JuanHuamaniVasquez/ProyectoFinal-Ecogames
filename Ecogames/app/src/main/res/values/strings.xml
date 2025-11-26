@@ -1,0 +1,86 @@
+<resources>
+    <string name="app_name">Semaforo</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="btn_inicio">Volver al menú</string>
+    <string name="btn_borrar_historial">Borrar historial</string>
+    <string name="tv_partida_anterior">Partidas anteriores</string>
+    <string name="tv_mejor_puntaje">Mejor puntaje histórico: 0</string>
+    <string name="tv_currentscore">Puntaje actual: 0</string>
+    <string name="rules_title">Reglas de los minijuegos</string>
+    <string name="rules_menu">EcoMemory\n
+                            • Encuentra las parejas entre residuo y tacho correcto.\n
+                            • Toca dos cartas para voltearlas; si coinciden, se quedan descubiertas.\n
+                            • Si no coinciden, se vuelven a voltear.
+                            Termina todas las parejas con el menor número de errores posible.\n\n
+                                Semáforo de Tachos\n
+                            • Aparecerá un residuo en pantalla.\n
+                            • Elige el tacho correcto: orgánico, reciclable, no reciclable o peligroso.\n
+                            • Sumas puntos si aciertas y pierdes puntos si fallas.\n
+                            • Tienes un tiempo limitado para hacer la mayor cantidad de aciertos posible.</string>
+    <string name="button_entendido">Entendido</string>
+    <string name="tv_menu_subtitle">Clasifica correctamente los residuos en el menor tiempo posible.</string>
+    <string name="btn_play_menu">Jugar Semaforo de Tachos</string>
+    <string name="btn_play_menu_2">Jugar EcoMemory</string>
+    <string name="btn_rules_menu">Ver reglas</string>
+    <string name="btn_salir_menu">Salir</string>
+    <string name="item_platano">Cáscara de plátano</string>
+    <string name="item_papel_cocina">Papel de cocina usado</string>
+    <string name="item_cascara_de_huevo">Cascara de huevo</string>
+    <string name="item_botella_de_plastico">Botella de plástico</string>
+    <string name="item_lata_de_gaseosa">Lata de gaseosa</string>
+    <string name="item_botella_de_vidrio">Botella de vidrio</string>
+    <string name="item_caja_de_carton_limpia">Caja de cartón limpia</string>
+    <string name="item_panal_desechable">Pañal desechable</string>
+    <string name="item_papel_higienico_sucio">Papel higiénico sucio</string>
+    <string name="item_vajilla_rota">Cerámica o vajilla rota</string>
+    <string name="item_collila_de_cigarro">Collila de cigarro</string>
+    <string name="item_pilas_usadas">Pilas usadas</string>
+    <string name="item_jeringa_usada">Jeringa usada</string>
+    <string name="item_medicamento_vencido">Medicamento vencido</string>
+    <string name="item_aceite_de_motor">Aceite de motor usado</string>
+    <string name="game_puntaje">Puntaje: %1$d</string>
+    <string name="game_tiempo_s">Tiempo: %1$ds</string>
+    <string name="game_tiempo_0s">Tiempo: 0s</string>
+    <string name="game_correcto">¡Correcto!</string>
+    <string name="game_incorrecto">Incorrecto</string>
+    <string name="game_score">score</string>
+    <string name="game_movimientos">Movimientos: %1$d</string>
+    <string name="game_ganaste">¡Ganaste!</string>
+    <string name="memory_game_win_message">Completaste todas las parejas.\nTiempo: %1$ds\nMovimientos: %2$d\nPuntaje: %3$d</string>
+    <string name="game_ver_resultados">Ver resultados</string>
+    <string name="game_jugar_de_nuevo">Jugar de nuevo</string>
+    <string name="game_moves">moves</string>
+    <string name="game_timemillis">timeMillis</string>
+    <string name="game_result_mejor_puntaje">Mejor puntaje histórico: %1$d</string>
+    <string name="game_resulttiempo_s">Tiempo: %1$ds</string>
+    <string name="memory_game_movimientos">Movimientos: %1$d</string>
+    <string name="memory_game_puntaje_actual">Puntaje actual: %1$d</string>
+    <string name="result_borrar_historial">Borrar historial</string>
+    <string name="result_message">¿Seguro que quieres borrar el historial de EcoMemory?</string>
+    <string name="result_si_borrar">Sí, borrar</string>
+    <string name="tv_result_mejor_puntaje">Mejor puntaje histórico: 0</string>
+    <string name="game_cancelar">Cancelar</string>
+    <string name="game_puntaje_actual">Puntaje actual: %1$d</string>
+    <string name="result_mejor_puntaje">Mejor puntaje histórico: %1$d</string>
+    <string name="tv_semaforo_de_tachos">Semáforo de Tachos</string>
+    <string name="tv_tiempo_60s">Tiempo: 60s</string>
+    <string name="tv_puntaje_0">Puntaje: 0</string>
+    <string name="tv_cascara_de_platano">Cáscara de plátano</string>
+    <string name="tv_hint_game">¿A qué tacho debería ir?</string>
+    <string name="btn_organico">ORGÁNICO</string>
+    <string name="btn_reciclable">RECICLABLE</string>
+    <string name="btn_no_reciclable">NO RECICLABLE</string>
+    <string name="btn_peligroso">PELIGROSO</string>
+    <string name="tv_ecomemory">EcoMemory</string>
+    <string name="tv_movimientos_0">Movimientos: 0</string>
+    <string name="tv_tiempo_0s">Tiempo: 0s</string>
+    <string name="tv_resultados_ecomemory">Resultados EcoMemory</string>
+    <string name="tv_puntaje_actual_0">Puntaje actual: 0</string>
+    <string name="tv_mejor_puntaje_0">Mejor puntaje histórico: 0</string>
+    <string name="tv_partidas_anteriores">Partidas anteriores</string>
+    <string name="tv_borrar_historial">Borrar historial</string>
+    <string name="tv_volver_al_menu">Volver al menú</string>
+    <string name="tv_resultados_de_la_partida">Resultados de la partida</string>
+    <string name="tv_fecha">Fecha: 01/01/2025 12:00</string>
+</resources>
