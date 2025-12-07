@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_menuFragment_to_memoryGameFragment"
             app:destination="@id/memoryGameFragment" />
+        <action
+            android:id="@+id/action_menuFragment_to_cintaEcoFragment"
+            app:destination="@id/cintaEcoFragment" />
     </fragment>
 
     <fragment
@@ -59,5 +62,11 @@
         app:destination="@id/menuFragment"
         app:popUpTo="@id/menuFragment"
         app:popUpToInclusive="true" />
+
+    <fragment
+        android:id="@+id/cintaEcoFragment"
+        android:name="com.example.semaforo.CintaEcoFragment"
+        tools:layout="@layout/fragment_cinta_eco" />
+
 
 </navigation>

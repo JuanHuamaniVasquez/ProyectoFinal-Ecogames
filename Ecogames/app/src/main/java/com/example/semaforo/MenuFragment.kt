@@ -32,6 +32,7 @@ class MenuFragment : Fragment() {
         // Referencias a los botones del menú
         val btnPlay: Button = view.findViewById(R.id.btnPlay)     // EcoMemory
         val btnPlay2: Button = view.findViewById(R.id.btnPlay2)   // Semáforo de Tachos
+        val btnPlay3: Button = view.findViewById(R.id.btnPlay3)   // Cinta Eco
         val btnRules: Button = view.findViewById(R.id.btnRules)   // Ver reglas de los minijuegos
         val btnExit: Button = view.findViewById(R.id.btnExit)     // Salir de la app
         btnPlay2.setOnClickListener {
@@ -40,6 +41,9 @@ class MenuFragment : Fragment() {
 
         btnPlay.setOnClickListener {
             findNavController().navigate(R.id.action_menuFragment_to_memoryGameFragment)
+        }
+        btnPlay3.setOnClickListener {
+            findNavController().navigate(R.id.action_menuFragment_to_cintaEcoFragment)
         }
 
         btnRules.setOnClickListener {
