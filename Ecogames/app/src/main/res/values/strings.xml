@@ -9,15 +9,21 @@
     <string name="tv_currentscore">Puntaje actual: 0</string>
     <string name="rules_title">Reglas de los minijuegos</string>
     <string name="rules_menu">EcoMemory\n
-                            • Encuentra las parejas entre residuo y tacho correcto.\n
-                            • Toca dos cartas para voltearlas; si coinciden, se quedan descubiertas.\n
-                            • Si no coinciden, se vuelven a voltear.
-                            Termina todas las parejas con el menor número de errores posible.\n\n
-                                Semáforo de Tachos\n
-                            • Aparecerá un residuo en pantalla.\n
-                            • Elige el tacho correcto: orgánico, reciclable, no reciclable o peligroso.\n
-                            • Sumas puntos si aciertas y pierdes puntos si fallas.\n
-                            • Tienes un tiempo limitado para hacer la mayor cantidad de aciertos posible.</string>
+        • Encuentra las parejas entre residuo y tacho del color correcto.\n
+        • Toca dos cartas para voltearlas; si pertenecen al mismo tipo de residuo, se quedan descubiertas.\n
+        • Si no coinciden, se vuelven a voltear.\n
+        • Completa todas las parejas en el menor tiempo y con la menor cantidad de movimientos.\n\n
+        Semáforo de Tachos\n
+        • Aparecerá un residuo en pantalla.\n
+        • Elige el tacho correcto: orgánico (marrón), reciclable (verde), no reciclable (negro) o peligroso (rojo).\n
+        • Sumas puntos si aciertas y pierdes puntos y vidas si fallas.\n
+        • El tiempo es limitado; intenta lograr el mayor puntaje posible antes de quedarte sin vidas.\n\n
+        Cinta Eco\n
+        • Un residuo aparece sobre la cinta en el centro de la pantalla.\n
+        • Arrástralo hasta el tacho correcto antes de que se acabe el tiempo.\n
+        • Ganas puntos por cada acierto; pierdes puntos y vidas por errores o residuos que se escapan.\n
+        • La cinta se vuelve más rápida a medida que acumulas aciertos.</string>
+
     <string name="button_entendido">Entendido</string>
     <string name="tv_menu_subtitle">Clasifica correctamente los residuos en el menor tiempo posible.</string>
     <string name="btn_play_menu">Jugar Semaforo de Tachos</string>
@@ -90,4 +96,19 @@
     <string name="tv_racha">Racha: 0</string>
     <string name="tv_puntaje">Puntaje: 0</string>
     <string name="tv_cintatittle">Cinta Eco</string>
+    <string name="tv_tu_partida">Tu partida</string>
+    <string name="escape_cinta">Se escapó sin clasificar</string>
+    <string name="incorrecto">Incorrecto</string>
+    <string name="puntaje">Puntaje: %1$d</string>
+    <string name="racha">Racha: %1$d</string>
+    <string name="vidas">Vidas: %1$d</string>
+    <string name="puntaje_actual">Puntaje actual: %1$d</string>
+    <string name="aciertos">Aciertos: %1$d</string>
+    <string name="vidas_restantes">Vidas restantes: %1$d</string>
+    <string name="mejor_puntaje_hist_rico">Mejor puntaje histórico: %1$d</string>
+    <string name="borrar_historial">Borrar historial</string>
+    <string name="seguro_que_quieres_borrar_el_historial_de_cinta_eco">¿Seguro que quieres borrar el historial de Cinta Eco?</string>
+    <string name="s_borrar">Sí, borrar</string>
+    <string name="mejor_puntaje_hist_rico_0">Mejor puntaje histórico: 0</string>
+    <string name="cancelar">Cancelar</string>
 </resources>

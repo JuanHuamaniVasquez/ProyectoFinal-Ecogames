@@ -6,14 +6,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_light"
-    tools:context=".MemoryResultFragment">
+    tools:context=".CintaResultFragment">
 
     <!-- Título -->
     <TextView
-        android:id="@+id/tvMemoryResultTitle"
+        android:id="@+id/tvCintaResultTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/tv_resultados_ecomemory"
+        android:text="Resultados Cinta Eco"
         android:textSize="22sp"
         android:textStyle="bold"
         android:textAlignment="center"
@@ -26,26 +26,26 @@
 
     <!-- Card resumen de la partida actual -->
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardMemoryCurrent"
+        android:id="@+id/cardCintaCurrent"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="4dp"
-        app:layout_constraintTop_toBottomOf="@id/tvMemoryResultTitle"
+        app:layout_constraintTop_toBottomOf="@id/tvCintaResultTitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/material_dynamic_neutral100"
             android:orientation="vertical"
+            android:background="@color/material_dynamic_neutral100"
             android:padding="16dp">
 
             <TextView
-                android:id="@+id/tvMemoryCurrentLabel"
+                android:id="@+id/tvCintaCurrentLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tv_tu_partida"
@@ -55,16 +55,16 @@
 
             <!-- Puntaje grande -->
             <TextView
-                android:id="@+id/tvMemoryCurrentScore"
+                android:id="@+id/tvCintaCurrentScore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tv_puntaje_actual_0"
+                android:text="Puntaje actual: 0"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_primary"
                 android:layout_marginTop="8dp" />
 
-            <!-- Chips de movimientos y tiempo -->
+            <!-- Chips de aciertos y vidas -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -73,13 +73,13 @@
                 android:layout_marginTop="12dp">
 
                 <TextView
-                    android:id="@+id/tvMemoryCurrentMoves"
+                    android:id="@+id/tvCintaCurrentCorrect"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/bg_info_chip"
                     android:paddingVertical="6dp"
-                    android:text="@string/tv_movimientos_0"
+                    android:text="Aciertos: 0"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:textColor="@color/info_chip_text"
@@ -90,26 +90,25 @@
                     android:layout_height="wrap_content" />
 
                 <TextView
-                    android:id="@+id/tvMemoryCurrentTime"
+                    android:id="@+id/tvCintaCurrentLives"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/bg_info_chip"
                     android:paddingVertical="6dp"
-                    android:text="@string/tv_tiempo_0s"
+                    android:text="Vidas restantes: 0"
                     android:textSize="14sp"
                     android:textStyle="bold"
                     android:textColor="@color/info_chip_text"
                     android:gravity="center" />
             </LinearLayout>
 
-            <!-- Mejor puntaje histórico dentro del mismo card -->
             <TextView
-                android:id="@+id/tvMemoryBestScore"
+                android:id="@+id/tvCintaBestScore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/tv_mejor_puntaje_0"
-                android:textSize="13sp"
+                android:text="Mejor puntaje histórico: 0"
+                android:textSize="16sp"
                 android:textColor="@color/text_secondary"
                 android:layout_marginTop="12dp" />
 
@@ -118,7 +117,7 @@
 
     <!-- Card de historial -->
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardMemoryHistory"
+        android:id="@+id/cardCintaHistory"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginHorizontal="16dp"
@@ -126,8 +125,8 @@
         android:layout_marginBottom="16dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="4dp"
-        app:layout_constraintTop_toBottomOf="@id/cardMemoryCurrent"
-        app:layout_constraintBottom_toTopOf="@id/btnClearMemoryHistory"
+        app:layout_constraintTop_toBottomOf="@id/cardCintaCurrent"
+        app:layout_constraintBottom_toTopOf="@id/btnClearCintaHistory"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -138,10 +137,10 @@
             android:padding="12dp">
 
             <TextView
-                android:id="@+id/tvMemoryHistoryLabel"
+                android:id="@+id/tvCintaHistoryLabel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="@string/tv_partidas_anteriores"
+                android:text="Partidas anteriores"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/text_secondary"
@@ -150,11 +149,11 @@
                 app:layout_constraintEnd_toEndOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvMemoryHistory"
+                android:id="@+id/rvCintaHistory"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="8dp"
-                app:layout_constraintTop_toBottomOf="@id/tvMemoryHistoryLabel"
+                app:layout_constraintTop_toBottomOf="@id/tvCintaHistoryLabel"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
@@ -164,7 +163,7 @@
 
     <!-- Botón borrar historial -->
     <Button
-        android:id="@+id/btnClearMemoryHistory"
+        android:id="@+id/btnClearCintaHistory"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/tv_borrar_historial"
@@ -175,11 +174,11 @@
         android:layout_marginBottom="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/btnBackToMenuFromMemory" />
+        app:layout_constraintBottom_toTopOf="@id/btnBackToMenuFromCinta" />
 
     <!-- Botón volver al menú -->
     <Button
-        android:id="@+id/btnBackToMenuFromMemory"
+        android:id="@+id/btnBackToMenuFromCinta"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/tv_volver_al_menu"

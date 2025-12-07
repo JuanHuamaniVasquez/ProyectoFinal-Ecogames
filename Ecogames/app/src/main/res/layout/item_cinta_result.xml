@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="4dp"
+    app:cardBackgroundColor="@color/material_dynamic_neutral100"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/tvItemCintaScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Puntaje: 0"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvItemCintaCorrect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Aciertos: 0"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvItemCintaLives"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Vidas restantes: 0"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvItemCintaDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fecha: 01/01/2025 12:00"
+            android:textSize="13sp"
+            android:textColor="@color/text_secondary" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

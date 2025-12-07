@@ -66,7 +66,17 @@
     <fragment
         android:id="@+id/cintaEcoFragment"
         android:name="com.example.semaforo.CintaEcoFragment"
-        tools:layout="@layout/fragment_cinta_eco" />
+        tools:layout="@layout/fragment_cinta_eco">
+        <action
+            android:id="@+id/action_cintaEcoFragment_to_cintaResultFragment"
+            app:destination="@id/cintaResultFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/cintaResultFragment"
+        android:name="com.example.semaforo.CintaResultFragment"
+        tools:layout="@layout/fragment_cinta_result" />
+
 
 
 </navigation>

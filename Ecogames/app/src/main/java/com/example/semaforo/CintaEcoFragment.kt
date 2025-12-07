@@ -10,9 +10,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
-import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import com.example.semaforo.R
 import com.example.semaforo.model.BinType
 import com.example.semaforo.model.WasteItem
 import android.view.DragEvent
@@ -20,10 +18,23 @@ import android.widget.Toast
 import android.content.ClipData
 import android.os.Build
 import android.view.MotionEvent
+import androidx.navigation.fragment.findNavController
+import com.example.semaforo.data.CintaResult
+import com.example.semaforo.data.CintaResultRepository
 
+/*
+Fragmento del minijuego "Cinta Eco".
 
-
+Se encarga de:
+ - Mostrar un residuo a la vez en pantalla.
+ - Permitir arrastrar el residuo hacia el tacho correcto (drag & drop).
+ - Gestionar puntaje, racha, vidas y velocidad de la "cinta".
+ - Controlar el tiempo disponible por residuo con un CountDownTimer.
+ - Guardar el resultado de la partida y navegar a la pantalla de resultados.
+ */
 class CintaEcoFragment : Fragment() {
+
+    // Elementos de la UI (HUD y residuo actual)
     private lateinit var tvScore: TextView
     private lateinit var tvStreak: TextView
     private lateinit var tvLives: TextView
@@ -31,19 +42,23 @@ class CintaEcoFragment : Fragment() {
     private lateinit var tvItemName: TextView
     private lateinit var progressItemTime: ProgressBar
 
+    // Botones que representan los tachos (zonas de drop)
     private lateinit var btnBrown: Button
     private lateinit var btnGreen: Button
     private lateinit var btnBlack: Button
     private lateinit var btnHazard: Button
 
+    // Lista de residuos posibles y el residuo actual
     private lateinit var items: List<WasteItem>
     private var currentItem: WasteItem? = null
 
+    // Estado del juego
     private var score = 0
     private var streak = 0
     private var lives = 3
     private var correctCount = 0
 
+    // Tiempo por residuo (en milisegundos)
     private var timePerItemMillis: Long = 5000L // empieza con 5s por objeto
     private val minTimePerItemMillis: Long = 2000L
 
@@ -58,6 +73,7 @@ class CintaEcoFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_cinta_eco, container, false)
     }
 
+    // Se llama cuando la vista ya está creada: aquí se enlazan las vistas y se inicia el juego
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -79,8 +95,8 @@ class CintaEcoFragment : Fragment() {
         startGame()
     }
 
+    // Inicializa la lista de residuos que pueden aparecer en la cinta
     private fun initItems() {
-        // Reutiliza los drawables que ya tienes
         items = listOf(
             // Residuos orgánicos
             WasteItem(getString(R.string.item_platano), R.drawable.ic_cascara_platano, BinType.MARRON),
@@ -104,13 +120,7 @@ class CintaEcoFragment : Fragment() {
         )
     }
 
-    private fun setupButtons() {
-        btnBrown.setOnClickListener { onBinSelected(BinType.MARRON) }
-        btnGreen.setOnClickListener { onBinSelected(BinType.VERDE) }
-        btnBlack.setOnClickListener { onBinSelected(BinType.NEGRO) }
-        btnHazard.setOnClickListener { onBinSelected(BinType.PELIGROSO) }
-    }
-
+    // Reinicia el estado del juego y muestra el primer residuo
     private fun startGame() {
         score = 0
         streak = 0
@@ -123,12 +133,14 @@ class CintaEcoFragment : Fragment() {
         showNextItem()
     }
 
+    // Actualiza los textos de puntaje, racha y vidas en pantalla
     private fun updateHud() {
-        tvScore.text = "Puntaje: $score"
-        tvStreak.text = "Racha: $streak"
-        tvLives.text = "Vidas: $lives"
+        tvScore.text = getString(R.string.puntaje, score)
+        tvStreak.text = getString(R.string.racha, streak)
+        tvLives.text = getString(R.string.vidas, lives)
     }
 
+    // Selecciona un residuo al azar y lo muestra, luego inicia el temporizador
     private fun showNextItem() {
         if (gameOver) return
 
@@ -141,6 +153,7 @@ class CintaEcoFragment : Fragment() {
         startItemTimer()
     }
 
+    // Inicia la cuenta regresiva para el residuo actual y actualiza la barra de progreso
     private fun startItemTimer() {
         itemTimer?.cancel()
         progressItemTime.progress = 100
@@ -157,6 +170,7 @@ class CintaEcoFragment : Fragment() {
         }.start()
     }
 
+    // Se llama cuando el jugador suelta el residuo sobre un tacho
     private fun onBinSelected(selectedBin: BinType) {
         if (gameOver) return
         val item = currentItem ?: return
@@ -170,24 +184,27 @@ class CintaEcoFragment : Fragment() {
         }
     }
 
+    // Se llama si el residuo se “escapa” (se acaba el tiempo)
     private fun onItemEscaped() {
         if (gameOver) return
         onWrong(escaped = true)
     }
 
+    // Lógica cuando el jugador acierta el tacho
     private fun onCorrect() {
         score += 20
         streak += 1
         correctCount += 1
         updateHud()
 
-        // Acelerar cinta cada 5 aciertos
+        // Acelerar cinta cada 5 aciertos, hasta un mínimo de tiempo
         if (correctCount % 5 == 0 && timePerItemMillis > minTimePerItemMillis) {
-            timePerItemMillis -= 500L // restamos 0.5s
+            timePerItemMillis -= 500L
         }
         showNextItem()
     }
 
+    // Lógica cuando el jugador se equivoca o deja escapar el residuo
     private fun onWrong(escaped: Boolean = false) {
         score -= 5
         if (score < 0) score = 0
@@ -197,39 +214,46 @@ class CintaEcoFragment : Fragment() {
 
         if (lives <= 0) {
             endGame()
-            } else {
-                // Mostrar feedback rápido
-                val msg = if (escaped) "Se escapó sin clasificar" else "Incorrecto"
-                Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
+        } else {
+            // Mostrar un mensaje corto según el tipo de error
+            val msg = if (escaped) getString(R.string.escape_cinta) else getString(R.string.incorrecto)
+            Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
 
-                showNextItem()
-            }
+            showNextItem()
+        }
     }
 
+    // Termina la partida, guarda el resultado y navega a la pantalla de resultados
     private fun endGame() {
         gameOver = true
         itemTimer?.cancel()
 
-        AlertDialog.Builder(requireContext())
-            .setTitle("Fin del juego")
-            .setMessage("Puntaje final: $score\nAciertos: $correctCount\nVidas agotadas.")
-            .setPositiveButton("Jugar de nuevo") { dialog, _ ->
-                dialog.dismiss()
-                startGame()
-            }
-            .setNegativeButton("Salir") { dialog, _ ->
-                dialog.dismiss()
-                // si tienes navgraph general, podrías hacer:
-                // findNavController().popBackStack()
-            }
-            .setCancelable(false)
-            .show()
+        val result = CintaResult(
+            score = score,
+            correctCount = correctCount,
+            livesRemaining = lives,
+            timestamp = System.currentTimeMillis()
+        )
+        CintaResultRepository.saveResult(requireContext(), result)
+
+        val args = Bundle().apply {
+            putInt("score", score)
+            putInt("correctCount", correctCount)
+            putInt("lives", lives)
+        }
+
+        findNavController().navigate(
+            R.id.action_cintaEcoFragment_to_cintaResultFragment,
+            args
+        )
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         itemTimer?.cancel()
     }
+
+    // Configura el arrastre del residuo (drag) al tocar la imagen
     @SuppressLint("ClickableViewAccessibility")
     private fun setupDragAndDrop() {
         ivItem.setOnTouchListener { view, event ->
@@ -251,6 +275,7 @@ class CintaEcoFragment : Fragment() {
         }
     }
 
+    // Configura los tachos como zonas de drop y reacciona cuando se suelta el residuo sobre ellos
     private fun setupDropTargets() {
         val dragListener = View.OnDragListener { v, event ->
             when (event.action) {
@@ -258,14 +283,17 @@ class CintaEcoFragment : Fragment() {
                     true
                 }
                 DragEvent.ACTION_DRAG_ENTERED -> {
+                    // Efecto visual cuando el residuo entra en el área del tacho
                     v.alpha = 0.7f
                     true
                 }
                 DragEvent.ACTION_DRAG_EXITED -> {
+                    // Restaurar apariencia al salir
                     v.alpha = 1f
                     true
                 }
                 DragEvent.ACTION_DROP -> {
+                    // Cuando el jugador suelta el residuo sobre el tacho
                     v.alpha = 1f
                     val binType = when (v.id) {
                         R.id.btnBrown -> BinType.MARRON
@@ -278,6 +306,7 @@ class CintaEcoFragment : Fragment() {
                     true
                 }
                 DragEvent.ACTION_DRAG_ENDED -> {
+                    // Fin del drag: restaurar apariencia
                     v.alpha = 1f
                     true
                 }
@@ -290,6 +319,4 @@ class CintaEcoFragment : Fragment() {
         btnBlack.setOnDragListener(dragListener)
         btnHazard.setOnDragListener(dragListener)
     }
-
-
 }
